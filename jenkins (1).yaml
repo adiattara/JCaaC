@@ -1,0 +1,237 @@
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - string:
+          id: "git-lab-perceptron"
+          scope: GLOBAL
+          secret: "{AQAAABAAAAAg8iXv6gTQ5/nMMAc6wK40+v64Lvp/n44pW7rGR2t883O6kvZttgpmvp009adqGGCD}"
+      - usernamePassword:
+          id: "gitlab-mg5"
+          password: "{AQAAABAAAAAQEczCoYMhEPb8N+ZufiPsbZwEaRS0IgLW7OgTnlfTpmw=}"
+          scope: GLOBAL
+          username: "devOpsBigData08"
+      - aws:
+          accessKey: "AKIA5XLNJU566GFE3TO4"
+          id: "aws"
+          scope: GLOBAL
+          secretKey: "{AQAAABAAAAAwZDCclzMvTcyfURlZrRDyaFnBROj5KQ2Kp/TvTs6s4XkVAZ+V9JKUCZKB8r0mO01bjNtHM7KbiXgeBDntheiPCQ==}"
+      - string:
+          id: "slack-perceptron"
+          scope: GLOBAL
+          secret: "{AQAAABAAAAAg22dH/Pfs032HtDrsqEQ5QDq1E/H5wTx+SZZGsiHTEssbyrC3BbTnIQjoklty1hb8}"
+      - string:
+          id: "slack-ssima-proejct-model-ci-cd"
+          scope: GLOBAL
+          secret: "{AQAAABAAAAAgfm0RLo9J+DpB+VTfvw7Wv9ejCdrq6fJjQP0v39Oxw6iCzMUCnyL1HUivTNug4cNr}"
+jenkins:
+  agentProtocols:
+  - "JNLP4-connect"
+  - "Ping"
+  authorizationStrategy:
+    globalMatrix:
+      entries:
+      - user:
+          name: "adiattara"
+          permissions:
+          - "Overall/Administer"
+      - user:
+          name: "godwin"
+          permissions:
+          - "Job/Build"
+          - "Job/Cancel"
+          - "Job/Configure"
+          - "Job/Create"
+          - "Job/Delete"
+          - "Job/Discover"
+          - "Job/Move"
+          - "Job/Read"
+          - "Job/Workspace"
+          - "Overall/Read"
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  disableRememberMe: false
+  disabledAdministrativeMonitors:
+  - "hudson.util.DoubleLaunchChecker"
+  labelAtoms:
+  - name: "built-in"
+  markupFormatter: "plainText"
+  mode: NORMAL
+  myViewsTabBar: "standard"
+  nodeMonitors:
+  - diskSpaceMonitor:
+      freeSpaceThreshold: "1GB"
+  - tmpSpace:
+      freeSpaceThreshold: "1GB"
+  numExecutors: 2
+  primaryView:
+    all:
+      name: "all"
+  projectNamingStrategy: "standard"
+  quietPeriod: 5
+  remotingSecurity:
+    enabled: true
+  scmCheckoutRetryCount: 0
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+      - id: "adiattara"
+        name: "devOps"
+        properties:
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - "experimentalFlags"
+        - mailer:
+            emailAddress: "devOPs@diattara.sn"
+        - "apiToken"
+        - "slack"
+      - id: "godwin"
+        name: "Amegah"
+        properties:
+        - "apiToken"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "slack"
+        - "timezone"
+        - "experimentalFlags"
+        - mailer:
+            emailAddress: "godwin@gmail.com"
+  slaveAgentPort: -1
+  updateCenter:
+    sites:
+    - id: "default"
+      url: "https://updates.jenkins.io/update-center.json"
+  views:
+  - all:
+      name: "all"
+  viewsTabBar: "standard"
+globalCredentialsConfiguration:
+  configuration:
+    providerFilter: "none"
+    typeFilter: "none"
+security:
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+  copyartifact:
+    mode: PRODUCTION
+  gitHooks:
+    allowedOnAgents: false
+    allowedOnController: false
+  gitHostKeyVerificationConfiguration:
+    sshHostKeyVerificationStrategy: "knownHostsFileVerificationStrategy"
+  sSHD:
+    port: -1
+unclassified:
+  buildDiscarders:
+    configuredBuildDiscarders:
+    - "jobBuildDiscarder"
+  buildStepOperation:
+    enabled: false
+  commonConfig:
+    nodeSelection: LABEL_ONLY
+    parallel: true
+    skipRoaming: true
+    timeoutInMilliseconds: 900000
+  email-ext:
+    adminRequiredForTemplateTesting: false
+    allowUnregisteredEnabled: false
+    charset: "UTF-8"
+    debugMode: false
+    defaultBody: |-
+      $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+
+      Check console output at $BUILD_URL to view the results.
+    defaultContentType: "text/plain"
+    defaultSubject: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!"
+    defaultTriggerIds:
+    - "hudson.plugins.emailext.plugins.trigger.FailureTrigger"
+    maxAttachmentSize: -1
+    maxAttachmentSizeMb: -1
+    precedenceBulk: false
+    watchingEnabled: false
+  enrichedSummaryConfig:
+    enrichedSummaryEnabled: false
+    httpClientDelayBetweenRetriesInSeconds: 1
+    httpClientMaxRetries: 3
+    httpClientTimeoutInSeconds: 1
+  fingerprints:
+    fingerprintCleanupDisabled: false
+    storage: "file"
+  gitHubConfiguration:
+    apiRateLimitChecker: ThrottleForNormalize
+  gitHubPluginConfig:
+    hookUrl: "http://3.85.75.30:8080/github-webhook/"
+  gitLabConnectionConfig:
+    connections:
+    - apiTokenId: "git-lab-perceptron"
+      clientBuilderId: "autodetect"
+      connectionTimeout: 10
+      ignoreCertificateErrors: false
+      name: "Gitlab"
+      readTimeout: 10
+      url: "https://gitlab.com/"
+    useAuthenticatedEndpoint: true
+  globalTimeOutConfiguration:
+    operations:
+    - "abortOperation"
+    overwriteable: false
+  injectionConfig:
+    allowUntrusted: false
+    checkForBuildAgentErrors: false
+    enabled: false
+    enforceUrl: false
+    injectCcudExtension: false
+    injectMavenExtension: false
+  junitTestResultStorage:
+    storage: "file"
+  location:
+    adminAddress: "Adresse pas encore configurée <nobody@nowhere>"
+    url: "http://3.85.75.30:8080/"
+  mailer:
+    charset: "UTF-8"
+    useSsl: false
+    useTls: false
+  pluginImpl:
+    enableCredentialsFromNode: false
+  pollSCM:
+    pollingThreadCount: 10
+  prismConfiguration:
+    theme: PRISM
+  scmGit:
+    addGitTagAction: false
+    allowSecondFetch: false
+    createAccountBasedOnEmail: false
+    disableGitToolChooser: false
+    hideCredentials: false
+    showEntireCommitSummaryInChanges: false
+    useExistingAccountWithSameEmail: false
+  slackNotifier:
+    botUser: false
+    room: "ssima-model-ci-cd"
+    sendAsText: false
+    teamDomain: "ssima-project"
+    tokenCredentialId: "slack-ssima-proejct-model-ci-cd"
+  subversionSCM:
+    workspaceFormat: 8
+  timestamper:
+    allPipelines: false
+    elapsedTimeFormat: "'<b>'HH:mm:ss.S'</b> '"
+    systemTimeFormat: "'<b>'HH:mm:ss'</b> '"
+  upstream:
+    globalUpstreamFilterStrategy: UseOldest
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
+  mavenGlobalConfig:
+    globalSettingsProvider: "standard"
+    settingsProvider: "standard"
